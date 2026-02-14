@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weedr Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --green: #2e7d32;
+      --green-dark: #1b5e20;
+      --bg: #f4f8f4;
+      --card: #ffffff;
+      --text: #1f2a1f;
+      --muted: #5b6b5b;
+      --danger-bg: #ffcdd2;
+      --danger-text: #b71c1c;
+      --warn-bg: #fff9c4;
+      --warn-text: #f57f17;
+      --ok-bg: #c8e6c9;
+      --ok-text: #1b5e20;
+      --border: #d7ead7;
+    }
+
+    * { box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { margin: 0; background: var(--bg); color: var(--text); }
+
+    header {
+      background: var(--green);
+      color: white;
+      padding: 22px 18px;
+    }
+    header h1 { margin: 0; font-size: 26px; }
+    header p { margin: 6px 0 0; opacity: 0.95; }
+
+    .wrap { max-width: 980px; margin: 22px auto; padding: 0 16px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      margin-bottom: 16px;
+    }
+
+    form.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 0; }
+    input[type="text"] {
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      width: min(560px, 100%);
+      font-size: 16px;
+      outline: none;
+    }
+    input[type="text"]:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(46,125,50,0.15);
+    }
+    button {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: none;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:hover { background: var(--green-dark); }
+
+    .small { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
+
+    .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .danger { background: var(--danger-bg); color: var(--danger-text); }
+    .warn { background: var(--warn-bg); color: var(--warn-text); }
+    .ok { background: var(--ok-bg); color: var(--ok-text); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      vertical-align: top;
+    }
+    th { background: #eef7ee; }
+    tr:last-child td { border-bottom: none; }
+
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .err {
+      color: var(--danger-text);
+      font-weight: 800;
+      margin-top: 10px;
+    }
+
+    code {
+      background: #f2f2f2;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Weedr Demo</h1>
+    <p>Enter a weed common name → see regulation info</p>
+  </header>
+
+  <div class="wrap">
+
+    <div class="card">
+      <form method="POST" class="row">
+        <input type="text" name="name" placeholder="Enter common name ç" value="{{ query or '' }}" required />
+        <button type="submit">Check</button>
+      </form>
+
+      <p class="small">
+        Demo flow: type a name → we look it up in <code>Rating.csv</code> + <code>CCR4500.csv</code> → then we check whether the name appears one of the websites scraped.
+      </p>
+
+      {% if error %}
+        <div class="err">{{ error }}</div>
+      {% endif %}
+    </div>
+
+    {% if result %}
+      <div class="card">
+        <h2 style="margin:0 0 10px 0;">Result</h2>
+
+        <p><b>Common Name:</b> {{ result.common_name }}</p>
+        <p><b>Scientific Name:</b> {{ result.scientific_name if result.scientific_name else "—" }}</p>
+
+        <div class="badges">
+          <span class="badge {{ 'ok' if result.found_in_db else 'warn' }}">
+            {{ "Found in local DB" if result.found_in_db else "Not in local DB" }}
+          </span>
+
+          <span class="badge {{ 'danger' if result.rating and result.rating != 'N/A' else 'warn' }}">
+            Rating: {{ result.rating if result.rating else "N/A" }}
+          </span>
+
+          <span class="badge {{ 'danger' if result.is_ccr else 'warn' }}">
+            {{ "CCR 4500 Listed" if result.is_ccr else "Not CCR 4500" }}
+          </span>
+        </div>
+
+        {% if checks and checks|length > 0 %}
+          <h3 style="margin:18px 0 8px 0;">websitesChecks</h3>
+          <table>
+            <thead>
+              <tr>
+                <th style="width:18%;">Status</th>
+                <th style="width:12%;">Match</th>
+                <th>Page</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in checks %}
+                <tr>
+                  <td>
+                    {% if c.status == "OK" %}
+                      <span class="badge ok">OK</span>
+                    {% else %}
+                      <span class="badge warn">{{ c.status }}</span>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if c.present %}
+                      <span class="badge ok">FOUND</span>
+                    {% else %}
+                      <span class="badge danger">NOT FOUND</span>
+                    {% endif %}
+                  </td>
+                  <td>
+                    <a href="{{ c.url }}" target="_blank">{{ c.url }}</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="small">No pages were checked.</p>
+        {% endif %}
+
+        {% if pages and pages|length > 0 %}
+          <p class="small" style="margin-top:12px;">
+            Pages configured in app.py: {{ pages|length }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</body>
+</html>

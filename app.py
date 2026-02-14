@@ -73,3 +73,28 @@ def to_bool_yes_no(x: Any) -> bool:
     ccr_set = set(ccr["scientific_name"].apply(norm).tolist())
 
     return ratings, ccr_set
+  
+  def build_queue(ratings: pd.DataFrame, limit_items: int) -> List[Dict[str, Any]]:
+    priority_map = {"A": 0, "B": 1, "C": 2}
+    df = ratings.copy()
+    df["priority"] = df["rating"].map(priority_map).fillna(3)
+    df = df.sort_values(["priority", "scientific_name"])
+
+    out: List[Dict[str, Any]] = []
+
+    for _, row in df.head(limit_items).iterrows():
+        sci = str(row["scientific_name"]).strip()
+        com = str(row["common_name"]).strip()
+        query = f"{sci} {com}".strip()
+
+        out.append(
+            {
+                "scientific_name": sci,
+                "common_name": com,
+                "rating": str(row["rating"]).strip().upper(),
+                "is_ccr_from_ratings": bool(row["is_ccr_flag"]),
+                "query": query,
+            }
+        )
+
+    return out

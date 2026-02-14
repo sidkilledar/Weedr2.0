@@ -1,0 +1,106 @@
+Scientific Name	Common Name	CDFA Pest Rating	CCR 4500 Noxious Weeds
+Alternanthera philoxeroides	Alligatorweed	A	Yes
+Arctotheca calendula	Capeweed	A	Yes
+Baccharis halimifolia	Sea-myrtle	A	No
+Carrichtera annua	Ward’s weed	A	No
+Chrysanthemoides monilifera	Bitoubush	A	No
+Clematis vitalba	Old man’s beard	A	No
+Crupina vulgaris	Bearded creeper	A	Yes
+Dittrichia viscosa	False yellowhead	A	No
+Echium plantagineum	Paterson’s curse	A	No
+Enchylaena tomentosa	Ruby saltbush	A	No
+Euphorbia hypericifolia	Graceful spurge	A	No
+Euphorbia myrsinites	Myrtle spurge	A	No
+"Fallopia spp. (Bohemian, giant, and
+Japanese knotweeds) see
+Reynoutria"	"Bohemian, giant, and Japanese
+knotweeds "	A	Yes
+Galega officinalis	Goatsrue	A	Yes
+Geranium lucidum	Shining cranesbill	A	No
+Gymnocoronis spilanthoides	Senegal tea plant	A	No
+Halimodendron halodendron	Russian salt tree	A	Yes
+Heracleum mantegazzianum	Giant hogweed	A	No
+Heteranthera reniformis	Kidneyleaf mudplant	A	No
+Hydrilla verticillata	Hydrilla	A	Yes
+Hydrocharis morsus-ranae	European frogbit	A	Yes
+Hygrophila polysperma	Indian swampweed	A	Yes
+Limnobium laevigatum	South American spongeplant	A	Yes
+Limnophila sessiliflora	Asian marshweed	A	Yes
+Ludwigia decurrens	Winged water-primrose	A	Yes
+Ludwigia peruviana	Peruvian water-primrose	A	Yes
+Monochoria vaginalis	False pickerel weed	A	No
+"Mantisalca salmantica (syn.
+Centaurea salmantica )"	dagger-flower	A	No
+Nymphoides peltata	Yellow floating-heart	A	Yes
+Orobanche aegyptiaca	Egyptian broomrape	A	Yes
+Orobanche ramosa	Branched broomrape	A	Yes
+Parthenium hysterophorus	Santa Maria feverfew	A	Yes
+Phytolacca heterotepala	Mexican pokeweed	A	No
+Reynoutria japonica	Japanese knotweed	A	Yes
+Reynoutria sachalinensis	Giant knotweed	A	Yes
+Reynoutria x bohemica	Bohemian knotweed	A	Yes
+Salsola collina	Spineless russianthistle	A	Yes
+Striga spp.	Witchweed	A	Yes
+Vachellia nilotica	Prickly acacia	A	Yes
+Viscum album	European mistletoe	A	Yes
+Volutaria tubuliflora	Desert knapweed	A	Yes
+Zizania latifolia	Manchurian wild rice	A	Yes
+scientific_name	common_name	rating	No
+Ambrosia trifida	Giant ragweed	B	No
+Butomus umbellatus	Flowering-rush	B	No
+Carthamus oxyacantha	Jeweled distaff thistle	B	No
+Cenchrus echinatus	Southern sandbur	B	Yes
+Cenchrus longispinus	Mat sandbur	B	Yes
+Cenchrus spinifex	Coast sandbur	B	Yes
+Cytisus striatus	Portuguese broom	B	No
+Erica lusitanica	Spanish heath	B	No
+Euphorbia dendroides	Tree spurge	B	Yes
+Euphorbia helioscopia	Sun spurge	B	No
+Gypsophila paniculata	Baby’s breath	B	No
+Halogeton glomeratus	Halogeton	B	Yes
+Hieracium aurantiacum	Orange hawkweed	B	No
+Hypericum canariense	Canary Island St. John’s wort	B	Yes
+Iris pseudacorus	Yellow-flag iris	B	No
+Lepidium coronopus	Swinecress	B	Yes
+Limnophila indica	Indian marshweed	B	Yes
+Limonium duriusculum	European sea-lavender	B	No
+Limonium ramosissimum	Algerian sea-lavender	B	No
+Pilosella aurantiaca	Orange hawkweed	B	No
+Rhagadiolus stellatus	Star endive	B	Yes
+Salsola gobicola	Barbwire russianthistle	B	No
+Solanum marginatum	White-margined nightshade	B	Yes
+Tamarix aphylla	Athel tree	B	No
+Youngia japonica	Japanese hawkweed	B	No
+Ageratum conyzoides	Tropical whiteweed	C	No
+Ailanthus altissima	Tree of heaven	C	Yes
+Asclepias physocarpa	Balloon plant	C	No
+Boehmeria cylindrica	Smallspike false nettle	C	No
+Brassica tournefortii	Sahara mustard	C	No
+Bromus tectorum	Cheatgrass	C	No
+Cenchrus clandestinus	Kikuyugrass	C	Yes
+Cirsium ochrocentrum	Yellowspine thistle	C	Yes
+Convolvulus arvensis	Field bindweed	C	Yes
+Crepis pulchra	Smallflower hawksbeard	C	No
+Diodia virginiana	Virginia buttonweed	C	Yes
+Drymaria cordata	Whitesnow	C	Yes
+Euphorbia cyathophora	Dwarf poinsettia	C	No
+Euphorbia hirta	Pillpod spurge	C	No
+Fumaria muralis	Wall fumitory	C	No
+Genista monspessulana	French broom	C	Yes
+Hypericum perforatum	Klamathweed	C	Yes
+Ipomoea aquatica	Water spinach	C	No
+Laportea aestuans	West Indian woodnettle	C	No
+Ludwigia hexapetala	Water-primrose	C	Yes
+Misopates orontium	Lesser snapdragon	C	No
+Myosoton aquaticum	Giant chickweed	C	Yes
+Myriophyllum aquaticum	Parrotfeather	C	No
+Nymphaea mexicana	Banana waterlily	C	Yes
+Panicum antidotale	Blue panicgrass	C	Yes
+Phragmites australis subsp. altissimus	Non-native common reed	C	Yes
+Phyllanthus tenellus	Mascarene Island leaf-flower	C	No
+Phyllanthus urinaria	Chamberbitter	C	No
+Salpichroa origanifolia	Lily of the valley vine	C	No
+Salsola tragus	Common russianthistle	C	Yes
+Solanum cardiophyllum	Heartleaf nightshade	C	Yes
+Solanum torvum	Turkeyberry	C	No
+Talinum paniculatum	Jewels of Opar	C	No
